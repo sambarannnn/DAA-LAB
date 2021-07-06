@@ -7,26 +7,10 @@ b)Find out the most repeating element in the array.
 
 #include <stdio.h>
 
-void input(int arr[], int n) {
-    printf("Enter elements : ");
-    for(int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-}
+void function(int *arr, int n) {
+    //arr is sorted first
+    BubbleSort(arr, n);
 
-void BubbleSort(int arr[], int n) {
-    for(int i = 0; i < n; i++) {
-        for(int j = i + 1; j < n; j++) {
-            if(arr[j] < arr[i]) {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
-        }
-    }
-}
-
-void function(int arr[], int n) {
     int total_duplicates = 0;
     int curr_repeating = 1;
     int max_repeating = 1;
@@ -49,6 +33,25 @@ void function(int arr[], int n) {
     printf("Most repeating element : %d\n", most_repeating);
 }
 
+void input(int arr[], int n) {
+    printf("Enter elements : ");
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+}
+
+void BubbleSort(int arr[], int n) {
+    for(int i = 0; i < n; i++) {
+        for(int j = i + 1; j < n; j++) {
+            if(arr[j] < arr[i]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}
+
 int main()
 {
     int n;
@@ -57,7 +60,6 @@ int main()
     int arr[n];
 
     input(arr, n);
-    BubbleSort(arr, n);
 
     function(arr, n);
     return 0;

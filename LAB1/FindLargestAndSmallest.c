@@ -32,7 +32,7 @@ int main()
     function(arr, n, &min, &max);
 
     printf("Smallest Element : %d\n", min);
-    printf("Largest Element : %d", max);
+    printf("Largest Element : %d\n", max);
 
     return 0;
 }

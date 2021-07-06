@@ -1,4 +1,10 @@
-#include <stdio.h>
+/*
+1.2Write a program to store random numbers into an array of n integers,
+where the array must contains some duplicates. Do the following:
+a)Find out the total number of duplicate elements.
+b)Find out the most repeating element in the array.
+*/
+
 #include <stdio.h>
 
 void input(int arr[], int n) {

@@ -1,4 +1,8 @@
-#include <stdio.h>
+/*
+1.1Write a program to store random numbers into an array of n integers and
+then find out the smallest and largest number stored in it.
+n is the user input.
+*/#include <stdio.h>
 
 void input(int arr[], int n) {
     printf("Enter elements : ");

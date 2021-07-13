@@ -20,15 +20,6 @@ void input(int **matrix, int n) {
     }
 }
 
-void printmatrix(int **matrix, int n) {
-    for(int i = 0; i < n; i++) {
-        for(int j = 0; j < n; j++) {
-            printf("%d ", matrix[i][j]);
-        }
-        printf("\n");
-    }
-}
-
 void function(int **matrix, int n) {
     int non_zero_elements = 0;
     int sum_above_leading_diagonal = 0;
@@ -47,9 +38,11 @@ void function(int **matrix, int n) {
 
             //c
             //main diag & secondary diag
-            if(i == j || (i + j) == (n-1))
+            if(i == j || (i + j) == (n-1)) {
                 diag_product *= matrix[i][j];
+            }
 
+            //d
             if((i + j) >= n)
                 printf("%d ", matrix[i][j]);
             else
@@ -58,11 +51,7 @@ void function(int **matrix, int n) {
         }
         printf("\n");
     }
-    //mid element is multiplied twice if n is odd(odd no of rows)
-    if(n%2 == 0) {
-        int mid = n/2;
-        diag_product /= matrix[mid][mid];
-    }
+
 
     printf("\na. No. of non-zero elements : %d.", non_zero_elements);
     printf("\nb. Sum of the elements above the leading diagonal : %d.", sum_above_leading_diagonal);

@@ -43,7 +43,7 @@ int main()
     //ALTER
     swap3(&a, &b, &c);
     printf("After Swapping : \n");
-    printf("(a, b, c) -> (%d, %d, %d)\\n", a, b, c);
+    printf("(a, b, c) -> (%d, %d, %d)\n", a, b, c);
 
     return 0;
 }

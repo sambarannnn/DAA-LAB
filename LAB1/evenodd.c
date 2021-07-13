@@ -46,7 +46,6 @@ void printArray(int *arr, int n) {
 
 int main()
 {
-
     int n;
     printf("Enter value of n : ");
     scanf("%d", &n);

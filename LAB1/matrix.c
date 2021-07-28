@@ -52,7 +52,6 @@ void function(int **matrix, int n) {
         printf("\n");
     }
 
-
     printf("\na. No. of non-zero elements : %d.", non_zero_elements);
     printf("\nb. Sum of the elements above the leading diagonal : %d.", sum_above_leading_diagonal);
     printf("\nd. Product of the diagonal elements : %d.", diag_product);

@@ -16,6 +16,8 @@ void function(int *arr, int n) {
     //we can use auxilliary Array : extra space, one iteration
     //or we can use two pointer method : one iteration, no extra space
 
+    //using left to populate evens
+    //using right to populate odds
     int left = 0;
     int right = n-1;
     while(left < right) {

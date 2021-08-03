@@ -1,111 +1,72 @@
-#include <stdio.h>
-#include <time.h>
-
-int euclidean_gcd(int a, int b)
-{
-    if (a == 0)
-        return b;
-    return euclidean_gcd(b%a, a);
-}
-
-int consec_int_checking(int m, int n) {
-    int t, r, g;
-    if(m>n)
-        t = n;
-    else
-        t = m;
-    a:do {
-        r = m % t;
-        if(r != 0)
-            t--;
-    } while(r != 0);
-    if(r == 0) {
-        r = n % t;
-        if(r == 0)
-            g = t;
-        else {
-            t--;
-            goto a;
-        }
-    }
-    return g;
-}
-#define MAXFACTORS 1024
-typedef struct{
-   int size;
-   int factor[MAXFACTORS + 1];
-   int exponent[MAXFACTORS + 1];
-} FACTORIZATION;
-void FindFactorization(int x, FACTORIZATION* factorization){
-   int i, j = 1;
-   int n = x, c = 0;
-   int k = 1;
-   factorization->factor[0] = 1;
-   factorization->exponent[0] = 1;aa
-   for (i = 2; i <= n; i++) {
-      c = 0;
-      while (n % i == 0) {
-         c++;
-         n = n / i;
-      }
-      if (c > 0) {
-         factorization->exponent[k] = c;
-         factorization->factor[k] = i;
-         k++;
-      }
-   }
-   factorization->size = k - 1;
-}
-
-int gcdMiddleSchoolProcedure(int m, int n){
-   FACTORIZATION mFactorization, nFactorization;
-   int r, mi, ni, i, k, x = 1, j;
-   FindFactorization(m, &mFactorization);
-   FindFactorization(n, &nFactorization);
-   int min;
-   i = 1;
-   j = 1;
-   while (i <= mFactorization.size && j <= nFactorization.size) {
-      if (mFactorization.factor[i] < nFactorization.factor[j])
-         i++;
-      else if (nFactorization.factor[j] < mFactorization.factor[i])
-         j++;
-      else{
-         min = mFactorization.exponent[i] > nFactorization.exponent[j] ? nFactorization.exponent[j] : mFactorization.exponent[i];
-         x = x * mFactorization.factor[i] * min;
-         i++;
-         j++;
-      }
-   }
-   return x;
-}
+#include<stdio.h>
+#include<stdlib.h>
 
 int main()
 {
-    int a, b;
-    double time_spent = 0.0;
-    printf("Enter first number : ");
-    scanf("%d", &a);
-    printf("Enter second number : ");
-    scanf("%d", &b);
+int choice, num1,num2,r,min,i,c,ans=1,m,n,count;
 
-    clock_t begin = clock();
-    printf("GCD(%d, %d) = %d\n", a, b, euclidean_gcd(a, b));
-    clock_t end = clock();
-    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("The elapsed time is %f ms\n", time_spent*1000);
+printf("Press 1 for Euclid's Algorithm'\n");
+printf("Press 2 for Consecutive integer checking Algorithm.\n");
+printf("Press 3 for Middle school procedure which makes use of common prime factors.\n"); printf("Enter your choice:\n");
+scanf("%d",&choice); switch (choice) {
+case 1: {
+printf("Enter-two integer numbers: "); count++;
+scanf ("%d %d", &num1, &num2); count++;
+while (num2 > 0) {
+r = num1 % num2; num1= num2; num2 = r;
+}
+count++;
+printf("GCD = %d \n",num1); count++;
+printf("The Count is %d\n",count);
+break;
 
-    begin = clock();
-    printf("GCD(%d, %d) = %d\n", a, b, consec_int_checking(a, b));
-    end = clock();
-    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("The elapsed time is %f ms\n", time_spent*1000);
+}
+case 2:{
 
-    begin = clock();
-    printf("GCD(%d, %d) = %d\n", a, b, gcdMiddleSchoolProcedure(a, b));
-    end = clock();
-    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
-    printf("The elapsed time is %f ms\n", time_spent*1000);
+printf("Enter-two integer numbers: "); count++;
+scanf ("%d %d", &num1, &num2); count++;
+if(num1<num2) min=num1;
+else
+min=num2; count++; r=min; count++;
+while (r>0){
+if(num1 % r == 0 && num2 % r == 0) return r;
+count++; r=r - 1; count++;
+printf ("GCD = %d \n",r); count++;
+printf("The Count is %d\n",count);
 
-    return 0;
+}
+break;
+}
+case 3:{
+printf("Enter-two integer numbers: "); count++;
+scanf ("%d %d", &num1, &num2); count++;
+c=num1>=num2?num2:num1; count++;
+for(i=2;i<=c;i++){ m=0;
+n=0;
+if(num1%i==0){
+m=1;
+num1=num1/i;
+}
+count++; if(num2%i==0){
+
+n=1;
+num2=num2/i;
+}
+count++;
+if(n==1 && m==1){
+ans=ans*i;
+}
+count++; if(n==1 || m==1) i--;
+
+}
+count++;
+printf ("GCD = %d \n",ans); count++;
+printf("The Count is %d\n",count);
+
+break;
+}
+default:
+printf("wrong Input\n");
+
+}
 }
